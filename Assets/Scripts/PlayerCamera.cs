@@ -1,16 +1,6 @@
 using UnityEngine;
 
-/// <summary>
-/// Minimal camera helper for use with Cinemachine.
-///
-/// Responsibilities:
-/// - Optionally lock the cursor.
-/// - Read the runtime (main) Camera's forward vector and align the player's yaw
-///   and the movement "orientation" to match the camera yaw (so movement follows camera direction).
-///
-/// Important: Cinemachine should handle input (via its own Input Provider or bindings).
-/// This class does NOT read look input anymore — it only follows the final camera orientation.
-/// </summary>
+
 public class PlayerCamera : MonoBehaviour
 {
 	[Header("Targets")]
@@ -21,7 +11,7 @@ public class PlayerCamera : MonoBehaviour
 	[SerializeField] private Transform orientation;
 
 	[Header("Smoothing")]
-	[Tooltip("Rotation smoothing factor. 0 = no smoothing, higher = smoother (0.05–0.2 is typical)")]
+	[Tooltip("Rotation smoothing factor. 0 = no smoothing, higher = smoother (0.05-0.2 is typical)")]
 	[SerializeField] private float smoothing = 0.08f;
 
 	[Header("Cursor")]

@@ -1,12 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Basic hitscan shooting using the camera center (viewport 0.5,0.5). Designed for use with Cinemachine.
-/// - Uses the new Input System via an InputActionReference (Fire action).
-/// - Performs a Raycast from the camera center and applies damage to IDamageable.
-/// - Can optionally spawn a projectile prefab instead of hitscan.
-/// </summary>
+
 public class PlayerShooting : MonoBehaviour
 {
     [Header("Input")]
@@ -25,11 +20,6 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private Transform muzzleTransform; // optional
     [SerializeField] private ParticleSystem muzzleFlashPrefab;
     [SerializeField] private GameObject impactPrefab;
-
-    [Header("Projectile (optional)")]
-    [SerializeField] private bool useProjectile = false;
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private float projectileSpeed = 40f;
 
     private float nextFireTime = 0f;
 
@@ -69,17 +59,6 @@ public class PlayerShooting : MonoBehaviour
 
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
-        if (useProjectile && projectilePrefab != null && muzzleTransform != null)
-        {
-            // Spawn projectile from muzzle and give velocity towards ray direction
-            var go = Instantiate(projectilePrefab, muzzleTransform.position, Quaternion.LookRotation(ray.direction));
-            if (go.TryGetComponent<Rigidbody>(out var rb))
-            {
-                rb.linearVelocity = ray.direction * projectileSpeed;
-            }
-            return;
-        }
-
         if (Physics.Raycast(ray, out RaycastHit hit, range, hitMask, QueryTriggerInteraction.Ignore))
         {
             // Instantiate impact visual
@@ -95,6 +74,14 @@ public class PlayerShooting : MonoBehaviour
             {
                 dmg.TakeDamage(damage);
             }
+        }
+    }
+
+    void Update()
+    {
+        if(fireAction != null && fireAction.action.IsPressed())
+        {
+            TryFire();
         }
     }
 }
