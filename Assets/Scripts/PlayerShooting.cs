@@ -19,7 +19,8 @@ public class PlayerShooting : MonoBehaviour
     [Header("Visuals")]
     [SerializeField] private Transform muzzleTransform; // optional
     [SerializeField] private ParticleSystem muzzleFlashPrefab;
-    [SerializeField] private GameObject impactPrefab;
+    [SerializeField] private GameObject enemyHitEffectPrefab;
+    [SerializeField] private GameObject terrainHitEffectPrefab;
 
     private float nextFireTime = 0f;
 
@@ -50,7 +51,7 @@ public class PlayerShooting : MonoBehaviour
         {
             var flash = Instantiate(muzzleFlashPrefab, muzzleTransform.position, muzzleTransform.rotation);
             flash.Play();
-            Destroy(flash.gameObject, 2f);
+            Destroy(flash.gameObject, 1f);
         }
 
         // Determine shot origin and direction from camera center
@@ -62,10 +63,15 @@ public class PlayerShooting : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, range, hitMask, QueryTriggerInteraction.Ignore))
         {
             // Instantiate impact visual
-            if (impactPrefab != null)
+            if (enemyHitEffectPrefab != null && hit.collider.CompareTag("Enemy"))
             {
-                var impact = Instantiate(impactPrefab, hit.point, Quaternion.LookRotation(hit.normal));
-                Destroy(impact, 4f);
+                var impact = Instantiate(enemyHitEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(impact, 1f);
+            }
+            else if (terrainHitEffectPrefab != null)
+            {
+                var impact = Instantiate(terrainHitEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(impact, 1f);
             }
 
             // Apply damage if target supports IDamageable
