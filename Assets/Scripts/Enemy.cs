@@ -45,4 +45,17 @@ public class Enemy : MonoBehaviour, IDamageable {
         rb.linearVelocity = new Vector3(direction.x * speed, rb.linearVelocity.y, direction.z * speed);
     }
 
+    //if enemy is near player, push Player away from enemy
+    private void OnCollisionEnter(Collision collision) { 
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Vector3 knockbackDirection = (collision.transform.position - transform.position).normalized;
+            Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
+            if (playerRb != null)
+            {
+                playerRb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
+            }
+        }
+    }
+
 }

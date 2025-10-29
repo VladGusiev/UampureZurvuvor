@@ -123,11 +123,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  speed: 6
+  speed: 2
   damage: 10
   attackRange: 2
   attackInterval: 1.5
-  knockbackForce: 5
+  knockbackForce: 10
 --- !u!54 &4097083808465969644
 Rigidbody:
   m_ObjectHideFlags: 0
