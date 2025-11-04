@@ -74,11 +74,10 @@ public class PlayerShooting : MonoBehaviour
                 Destroy(impact, 1f);
             }
 
-            // Apply damage if target supports IDamageable
-            var dmg = hit.collider.GetComponentInParent<IDamageable>();
-            if (dmg != null)
+            var enemyComponent = hit.collider.GetComponent<Enemy>();
+            if (enemyComponent != null)
             {
-                dmg.TakeDamage(damage);
+                enemyComponent.TakeDamage(damage);
             }
         }
     }

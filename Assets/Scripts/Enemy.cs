@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamageable {
+public class Enemy : MonoBehaviour {
 
     [SerializeField] private float hp = 100f;
     [SerializeField] private float speed = 3f;
@@ -8,17 +8,28 @@ public class Enemy : MonoBehaviour, IDamageable {
     [SerializeField] private float attackRange = 2f;
     [SerializeField] private float attackInterval = 1.5f;
     [SerializeField] private float knockbackForce = 5f;
+    [SerializeField] private int experienceValue = 10;
 
 
     private float lastAttackTime = 0f;
     private GameObject player;
     private Rigidbody rb;
 
-
-
     public void TakeDamage(float amount)
     {
-        hp -= amount; if (hp <= 0) Destroy(gameObject);
+        hp -= amount; 
+        if (hp <= 0) {
+            GiveExperience(player.GetComponent<PlayerLeveling>());
+            Destroy(gameObject);
+        }
+    }
+
+    public void GiveExperience(PlayerLeveling playerLeveling)
+    {
+        if (playerLeveling != null)
+        {
+            playerLeveling.AddExperience(experienceValue);
+        }
     }
 
     void Start()

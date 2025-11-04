@@ -3,7 +3,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Objects")]
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject weakEnemyPrefab;
+    [SerializeField] private GameObject StrongEnemyPrefab;
     [SerializeField] private GameObject playerObject;
 
     [Header("Spawning settings")]
@@ -22,7 +23,10 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        if (enemyPrefab == null || playerObject == null) return;
+        if (weakEnemyPrefab == null || StrongEnemyPrefab == null || playerObject == null) return;
+
+        // Randomly choose enemy type to spawn
+        GameObject enemyPrefab = (Random.value < 0.7f) ? weakEnemyPrefab : StrongEnemyPrefab;
 
         // Spawn at random position around player within specified distance, at y=0
         Vector2 randomCircle = Random.insideUnitCircle.normalized * Random.Range(minSpawningDistance, maxSpawningDistance);

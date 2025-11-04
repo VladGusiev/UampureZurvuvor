@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9aaaaa15086d4669991ddaa7ceda3ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 325793811797875570, guid: bdeb83b6fa57302498408880469986e0, type: 3}
+  weakEnemyPrefab: {fileID: 325793811797875570, guid: bdeb83b6fa57302498408880469986e0, type: 3}
+  StrongEnemyPrefab: {fileID: 2383775213869463305, guid: b952e451060e44500b01da32c266aeda, type: 3}
   playerObject: {fileID: 0}
   maxSpawningDistance: 25
   minSpawningDistance: 5
