@@ -9,6 +9,7 @@ public class PlayerLeveling : MonoBehaviour
     [SerializeField] private int experienceToLevelUp = 100;
     [SerializeField] private Image xpBarImage;
     [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private LevelUpOptions levelUpOptions;
 
     public void Start()
     {
@@ -38,6 +39,9 @@ public class PlayerLeveling : MonoBehaviour
 
         string levelStr = "Lvl. " + currentLevel.ToString();
         levelText.text = levelStr;
+
+        // find object with name "LevelUpPanel" and access script LevelUpOptions to show level up options
+        if (levelUpOptions != null) levelUpOptions.ShowLevelUpOptions(new string[] { "Assault Rifle", "Minigun" });
     }
     
 }

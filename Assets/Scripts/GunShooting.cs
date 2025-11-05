@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class PlayerShooting : MonoBehaviour
+public class GunShooting : MonoBehaviour
 {
     [Header("Input")]
     [Tooltip("Reference to a Button action (Fire). Use performed callback or press/release.)")]

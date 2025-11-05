@@ -25,11 +25,7 @@ public class PlayerCamera : MonoBehaviour
 
 	void Start()
 	{
-		if (lockCursor)
-		{
-			Cursor.lockState = CursorLockMode.Locked;
-			Cursor.visible = false;
-		}
+		if (lockCursor) LockCursor();
 	}
 
 	void Update()
@@ -51,5 +47,10 @@ public class PlayerCamera : MonoBehaviour
 
 		if (playerBody != null)
 			playerBody.rotation = Quaternion.Slerp(playerBody.rotation, targetYaw, t);
+	}
+	public void LockCursor()
+	{
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 	}
 }
