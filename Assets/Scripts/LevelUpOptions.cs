@@ -38,24 +38,34 @@ public class LevelUpOptions : MonoBehaviour
     }
     private void OnOptionSelected(int index)
     {
-
-        // if number 1 is selected, give player an assault rifle if 2, minigun 
-        WeaponGetter weaponGetter = FindObjectOfType<WeaponGetter>();
-        if (weaponGetter != null)
+        // Determine which weapon was selected
+        WeaponType selectedWeapon = WeaponType.AssaultRifle; // Default
+        
+        switch (index)
         {
-            switch (index)
-            {
-                case 0:
-                    weaponGetter.ProvideWeapon(WeaponType.AssaultRifle);
-                    break;
-                case 1:
-                    weaponGetter.ProvideWeapon(WeaponType.Minigun);
-                    break;
-                default:
-                    Debug.Log("No valid option selected");
-                    break;
-            }
+            case 0:
+                selectedWeapon = WeaponType.AssaultRifle;
+                break;
+            case 1:
+                selectedWeapon = WeaponType.Minigun;
+                break;
+            default:
+                Debug.Log("No valid option selected");
+                break;
         }
+
+        DropBoxSpawner dropBoxSpawner = FindObjectOfType<DropBoxSpawner>();
+        if (dropBoxSpawner != null)
+        {
+            dropBoxSpawner.SpawnDropBox(selectedWeapon);
+        }
+        else
+        {
+            Debug.LogError("DropBoxSpawner not found in the scene!");
+        }
+        
+        
+        // Hide menu and resume game
         gameObject.SetActive(false);
         Time.timeScale = 1f; // Resume the game
         LockCursor();
@@ -66,9 +76,9 @@ public class LevelUpOptions : MonoBehaviour
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
 	}
-	public void LockCursor()
-	{
-		Cursor.lockState = CursorLockMode.Locked;
-		Cursor.visible = false;
-	}
+    public void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 }
