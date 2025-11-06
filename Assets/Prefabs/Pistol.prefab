@@ -156,11 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunTransform: {fileID: 3971923599191745938}
-  muzzleTransform: {fileID: 2897229711070835215}
-  smoothTime: 0.03
-  clampPitch: 0
-  minPitch: -60
-  maxPitch: 60
+  smoothSpeed: 10
 --- !u!114 &4921497275684458257
 MonoBehaviour:
   m_ObjectHideFlags: 0

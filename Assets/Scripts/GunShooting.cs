@@ -62,6 +62,8 @@ public class GunShooting : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, range, hitMask, QueryTriggerInteraction.Ignore))
         {
+            if (!IsTargetInFrontOfPlayer(hit.point)) return;
+
             // Instantiate impact visual
             if (enemyHitEffectPrefab != null && hit.collider.CompareTag("Enemy"))
             {
@@ -80,6 +82,17 @@ public class GunShooting : MonoBehaviour
                 enemyComponent.TakeDamage(damage);
             }
         }
+    }
+    
+    private bool IsTargetInFrontOfPlayer(Vector3 targetPosition)
+    {
+        Transform playerTransform = transform.root;
+        Vector3 toTarget = targetPosition - playerTransform.position;
+        toTarget.y = 0f;
+        Vector3 playerForward = playerTransform.forward;
+        playerForward.y = 0f;
+        float dotProduct = Vector3.Dot(playerForward.normalized, toTarget.normalized);
+        return dotProduct > 0f; // 0° = front hemisphere only
     }
 
     void Update()
