@@ -46,8 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weakEnemyPrefab: {fileID: 325793811797875570, guid: bdeb83b6fa57302498408880469986e0, type: 3}
   StrongEnemyPrefab: {fileID: 2383775213869463305, guid: b952e451060e44500b01da32c266aeda, type: 3}
+  flyingEnemyPrefab: {fileID: 325793811797875570, guid: 2e80bf4b6f7f44c6583d8bd3d8a7950d, type: 3}
   playerObject: {fileID: 0}
   maxSpawningDistance: 25
   minSpawningDistance: 5
-  spawnInterval: 3
+  spawnInterval: 1
   maxEnemies: 20

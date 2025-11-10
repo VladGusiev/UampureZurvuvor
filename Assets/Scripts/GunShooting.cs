@@ -76,7 +76,7 @@ public class GunShooting : MonoBehaviour
                 Destroy(impact, 1f);
             }
 
-            var enemyComponent = hit.collider.GetComponent<Enemy>();
+            var enemyComponent = hit.collider.GetComponent<EnemyStats>();
             if (enemyComponent != null)
             {
                 enemyComponent.TakeDamage(damage);

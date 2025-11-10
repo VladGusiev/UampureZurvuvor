@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 3261259323828556045}
   - component: {fileID: 1304519522282554293}
   - component: {fileID: 3989022044041725621}
-  - component: {fileID: 6811482404926526743}
   - component: {fileID: 7594922074995756043}
+  - component: {fileID: 5900912139204242533}
+  - component: {fileID: 5051883613657472971}
+  - component: {fileID: 3084179884669998936}
   m_Layer: 0
   m_Name: StrongEnemy
   m_TagString: Enemy
@@ -110,25 +112,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6811482404926526743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2383775213869463305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6811e4990580a6f488162f797692a617, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 250
-  speed: 3
-  damage: 20
-  attackRange: 2
-  attackInterval: 1.5
-  knockbackForce: 100
-  experienceValue: 25
 --- !u!54 &7594922074995756043
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -156,3 +139,50 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5900912139204242533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2383775213869463305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac29bc9e346840d7aa8bcccbb317ffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5051883613657472971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2383775213869463305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325d614ca48434addb1601a75aa5b782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3084179884669998936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2383775213869463305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6811e4990580a6f488162f797692a617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 200
+  speed: 2
+  damage: 10
+  attackRange: 2.01
+  attackInterval: 1
+  knockbackForce: 30
+  experienceValue: 40
+  enemyType: 0
+  attackProjectilePrefab: {fileID: 0}
+  projectileSpeed: 10
+  projectileSpawnPoint: {fileID: 0}

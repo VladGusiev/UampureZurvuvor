@@ -5,6 +5,7 @@ public class EnemySpawner : MonoBehaviour
     [Header("Objects")]
     [SerializeField] private GameObject weakEnemyPrefab;
     [SerializeField] private GameObject StrongEnemyPrefab;
+    [SerializeField] private GameObject flyingEnemyPrefab;
     [SerializeField] private GameObject playerObject;
 
     [Header("Spawning settings")]
@@ -15,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     private float timer = 0f;
 
     private GameObject[] allEnemies;
+    private GameObject enemyPrefab;
 
     void Start()
     {
@@ -24,17 +26,39 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         if (weakEnemyPrefab == null || StrongEnemyPrefab == null || playerObject == null) return;
-
-        // Randomly choose enemy type to spawn
-        GameObject enemyPrefab = (Random.value < 0.7f) ? weakEnemyPrefab : StrongEnemyPrefab;
-
-        // Spawn at random position around player within specified distance, at y=0
-        Vector2 randomCircle = Random.insideUnitCircle.normalized * Random.Range(minSpawningDistance, maxSpawningDistance);
-        Vector3 spawnPosition = new Vector3(playerObject.transform.position.x + randomCircle.x, 1f, playerObject.transform.position.z + randomCircle.y);
-
         if (allEnemies.Length >= maxEnemies) return;
+
+        GameObject enemyPrefab = GetRandomEnemyPrefab();
+
+        InstantiateEnemy(enemyPrefab);
+
+    }
+
+    private GameObject GetRandomEnemyPrefab()
+    {
+        float roll = Random.Range(0f, 100f);
+        if (roll <= 40f)
+            enemyPrefab = weakEnemyPrefab;
+        else if (roll <= 75f)
+            enemyPrefab = flyingEnemyPrefab;
+        else
+            enemyPrefab = StrongEnemyPrefab;
+        return enemyPrefab;
+    }
+
+    private void InstantiateEnemy(GameObject enemyPrefab)
+    {
+        EnemyStats enemyStats = enemyPrefab.GetComponent<EnemyStats>();
+        float yCoordiante = 0f;
+
+        if(enemyStats.enemyMovementType == EnemyMovementType.Airborne) yCoordiante = 10f;
+
+        Vector2 randomCircle = Random.insideUnitCircle.normalized * Random.Range(minSpawningDistance, maxSpawningDistance);
+        Vector3 spawnPosition = new Vector3(playerObject.transform.position.x + randomCircle.x, yCoordiante, playerObject.transform.position.z + randomCircle.y);
+
         Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
     }
+
     void Update()
     {
         timer += Time.deltaTime;

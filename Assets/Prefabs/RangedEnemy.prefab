@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4865568035246709258}
   - component: {fileID: 5620022438787358242}
   m_Layer: 0
-  m_Name: WeakEnemy
+  m_Name: RangedEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,8 @@ Transform:
   m_LocalPosition: {x: -7.52, y: 7.2, z: 11.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7153834857167481770}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1560439882327597571
@@ -137,7 +138,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 1
 --- !u!114 &3463102057625442481
 MonoBehaviour:
@@ -154,15 +155,15 @@ MonoBehaviour:
   hp: 100
   speed: 3
   damage: 10
-  attackRange: 1.05
-  attackInterval: 1
+  attackRange: 15
+  attackInterval: 2
   knockbackForce: 10
   experienceValue: 20
-  enemyAttackType: 0
-  enemyMovementType: 0
-  attackProjectilePrefab: {fileID: 0}
-  projectileSpeed: 10
-  projectileSpawnPoint: {fileID: 0}
+  enemyAttackType: 1
+  enemyMovementType: 1
+  attackProjectilePrefab: {fileID: 8028159513872491755, guid: 0ba47b35f29923140991930c4db60b37, type: 3}
+  projectileSpeed: 20
+  projectileSpawnPoint: {fileID: 7153834857167481770}
 --- !u!114 &4865568035246709258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,3 +188,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac29bc9e346840d7aa8bcccbb317ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2422841509113390850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7153834857167481770}
+  m_Layer: 0
+  m_Name: Projectile spawn point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7153834857167481770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2422841509113390850}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7489268967623645089}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
