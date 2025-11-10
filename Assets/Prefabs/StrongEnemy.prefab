@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5900912139204242533}
   - component: {fileID: 5051883613657472971}
   - component: {fileID: 3084179884669998936}
+  - component: {fileID: -2178077285204189075}
   m_Layer: 0
   m_Name: StrongEnemy
   m_TagString: Enemy
@@ -182,7 +183,20 @@ MonoBehaviour:
   attackInterval: 1
   knockbackForce: 30
   experienceValue: 40
-  enemyType: 0
+  enemyAttackType: 0
+  enemyMovementType: 0
   attackProjectilePrefab: {fileID: 0}
-  projectileSpeed: 10
   projectileSpawnPoint: {fileID: 0}
+  projectileSpeed: 10
+--- !u!114 &-2178077285204189075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2383775213869463305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5116154991e6f246848cf69a03c418d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

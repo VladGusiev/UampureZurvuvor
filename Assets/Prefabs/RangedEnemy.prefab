@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3463102057625442481}
   - component: {fileID: 4865568035246709258}
   - component: {fileID: 5620022438787358242}
+  - component: {fileID: 5469003177407834528}
   m_Layer: 0
   m_Name: RangedEnemy
   m_TagString: Enemy
@@ -162,8 +163,8 @@ MonoBehaviour:
   enemyAttackType: 1
   enemyMovementType: 1
   attackProjectilePrefab: {fileID: 8028159513872491755, guid: 0ba47b35f29923140991930c4db60b37, type: 3}
-  projectileSpeed: 20
   projectileSpawnPoint: {fileID: 7153834857167481770}
+  projectileSpeed: 20
 --- !u!114 &4865568035246709258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +187,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ac29bc9e346840d7aa8bcccbb317ffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5469003177407834528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325793811797875570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5116154991e6f246848cf69a03c418d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2422841509113390850

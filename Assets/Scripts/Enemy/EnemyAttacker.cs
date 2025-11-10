@@ -15,13 +15,20 @@ public class EnemyAttacker : MonoBehaviour
     private void TryRangedAttack() {
         if (enemyStats.attackProjectilePrefab != null && enemyStats.projectileSpawnPoint != null)
         {
-            GameObject projectile = Instantiate(enemyStats.attackProjectilePrefab, enemyStats.projectileSpawnPoint.position, Quaternion.identity);
+            // Rotate enemy toward player
+            gameObject.transform.rotation = Quaternion.LookRotation(player.transform.position - transform.position);
+
+            // Spawn range projectile
+            GameObject beam = Instantiate(
+                enemyStats.attackProjectilePrefab,
+                enemyStats.projectileSpawnPoint.position,
+                enemyStats.projectileSpawnPoint.rotation
+            );
+            
             Vector3 direction = (player.transform.position - enemyStats.projectileSpawnPoint.position).normalized;
-            Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
-            if (projectileRb != null)
-            {
-                projectileRb.linearVelocity = direction * enemyStats.projectileSpeed;
-            }
+            beam.transform.rotation = Quaternion.LookRotation(direction);
+            
+
         }
         lastAttackTime = Time.time;
     }
@@ -34,7 +41,6 @@ public class EnemyAttacker : MonoBehaviour
         Rigidbody playerRb = player.GetComponent<Rigidbody>();
         if (playerRb != null)
         {
-            // Use VelocityChange so knockback is noticeable regardless of player mass
             playerRb.AddForce(knockbackDirection * enemyStats.knockbackForce, ForceMode.VelocityChange);
         }
 
@@ -43,12 +49,10 @@ public class EnemyAttacker : MonoBehaviour
 
     void Update()
     {
-        // if player is not in range, return
         if (player == null || enemyStats == null) return;
         if (Vector3.Distance(transform.position, player.transform.position) > enemyStats.attackRange) return;
         if (Time.time - lastAttackTime < enemyStats.attackInterval) return;
 
-        // Perform attacks
         if (enemyStats.enemyAttackType == EnemyAttackType.Ranged) {
             TryRangedAttack();
             return;

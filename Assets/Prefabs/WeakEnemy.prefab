@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3463102057625442481}
   - component: {fileID: 4865568035246709258}
   - component: {fileID: 5620022438787358242}
+  - component: {fileID: -312083964292492167}
   m_Layer: 0
   m_Name: WeakEnemy
   m_TagString: Enemy
@@ -161,8 +162,8 @@ MonoBehaviour:
   enemyAttackType: 0
   enemyMovementType: 0
   attackProjectilePrefab: {fileID: 0}
-  projectileSpeed: 10
   projectileSpawnPoint: {fileID: 0}
+  projectileSpeed: 10
 --- !u!114 &4865568035246709258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,5 +186,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ac29bc9e346840d7aa8bcccbb317ffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-312083964292492167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325793811797875570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5116154991e6f246848cf69a03c418d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -14,29 +14,7 @@ public class EnemyStats : MonoBehaviour {
 
     [Header("Ranged Units Parameters")]
     [SerializeField] public GameObject attackProjectilePrefab;
-    [SerializeField] public float projectileSpeed = 10f;
     [SerializeField] public Transform projectileSpawnPoint;
-
-    private GameObject player;
-
-    public void TakeDamage(float amount)
-    {
-        hp -= amount; 
-        if (hp <= 0) {
-            GiveExperience(player.GetComponent<PlayerLeveling>());
-            Destroy(gameObject);
-        }
-    }
-
-    public void GiveExperience(PlayerLeveling playerLeveling)
-    {
-        if (playerLeveling != null)
-        {
-            playerLeveling.AddExperience(experienceValue);
-        }
-    }
-    void Start() {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
+    [SerializeField] public float projectileSpeed = 20f;
 
 }
